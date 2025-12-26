@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X AI回复生成器 - 设置</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="options-container">
+    <div class="options-header">
+      <h1>✨ X AI回复生成器 - 设置</h1>
+    </div>
+    
+    <div class="options-content">
+      <!-- API配置 -->
+      <section class="settings-section">
+        <h2>API配置</h2>
+        
+        <div class="form-group">
+          <label for="baseUrl">API Base URL</label>
+          <input 
+            type="text" 
+            id="baseUrl" 
+            placeholder="https://api.openai.com/v1"
+            class="form-input"
+          >
+          <p class="help-text">
+            API端点地址。默认为OpenAI官方地址，也可以使用中转服务或其他兼容的API服务。
+          </p>
+        </div>
+        
+        <div class="form-group">
+          <label for="apiKey">API密钥</label>
+          <input 
+            type="password" 
+            id="apiKey" 
+            placeholder="sk-..."
+            class="form-input"
+          >
+          <p class="help-text">
+            从 <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI平台</a> 或你的API提供商获取密钥。
+            密钥存储在本地，不会被发送到任何第三方服务。
+          </p>
+        </div>
+        
+        <div class="form-group">
+          <label for="model">模型</label>
+          <input 
+            type="text" 
+            id="model" 
+            placeholder="gpt-4o"
+            class="form-input"
+          >
+          <p class="help-text">输入模型名称，或从下方快速选择常用模型</p>
+        </div>
+        
+        <div class="form-group">
+          <h3>快速选择模型</h3>
+          <div class="model-category">
+            <h4>OpenAI 模型</h4>
+            <div class="template-buttons">
+              <button class="model-btn" data-model="gpt-5.2">
+                🚀 GPT-5.2 (最新旗舰)
+              </button>
+              <button class="model-btn" data-model="gpt-5.2-codex">
+                💻 GPT-5.2-Codex (代码专用)
+              </button>
+              <button class="model-btn" data-model="gpt-4.1">
+                ⭐ GPT-4.1
+              </button>
+              <button class="model-btn" data-model="gpt-4.1-mini">
+                ⚡ GPT-4.1-mini (高效)
+              </button>
+              <button class="model-btn" data-model="gpt-4o">
+                🎯 GPT-4o (多模态)
+              </button>
+              <button class="model-btn" data-model="gpt-4-turbo">
+                🏃 GPT-4-turbo (快速)
+              </button>
+            </div>
+          </div>
+          
+          <div class="model-category">
+            <h4>Anthropic Claude 模型</h4>
+            <div class="template-buttons">
+              <button class="model-btn" data-model="claude-opus-4">
+                🚀 Claude Opus 4 (最新旗舰)
+              </button>
+              <button class="model-btn" data-model="claude-sonnet-4">
+                ⭐ Claude Sonnet 4
+              </button>
+              <button class="model-btn" data-model="claude-sonnet-3.7">
+                📝 Claude Sonnet 3.7
+              </button>
+            </div>
+            <p class="help-text model-note">
+              使用Claude模型需要设置Base URL为: <code>https://api.anthropic.com/v1</code>
+            </p>
+          </div>
+          
+          <div class="model-category">
+            <h4>Google Gemini 模型</h4>
+            <div class="template-buttons">
+              <button class="model-btn" data-model="gemini-3-pro">
+                🚀 Gemini 3 Pro (最新)
+              </button>
+              <button class="model-btn" data-model="gemini-2.5-flash">
+                ⚡ Gemini 2.5 Flash
+              </button>
+              <button class="model-btn" data-model="gemini-2.0-flash">
+                🏃 Gemini 2.0 Flash
+              </button>
+              <button class="model-btn" data-model="gemini-1.5-pro">
+                ⭐ Gemini 1.5 Pro
+              </button>
+            </div>
+            <p class="help-text model-note">
+              使用Gemini模型需要设置Base URL为: <code>https://generativelanguage.googleapis.com/v1beta</code>
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 自定义提示词设置 -->
+      <section class="settings-section">
+        <h2>自定义提示词</h2>
+        <p class="help-text">
+          在这里设置你希望AI如何生成回复。例如：设定你的身份、回复风格、长度偏好等。
+        </p>
+        
+        <div class="form-group">
+          <label for="customPrompt">自定义指示</label>
+          <textarea 
+            id="customPrompt" 
+            placeholder="例如：你是一个技术博主，回复应该简洁有见地，长度在100字以内。可以使用表情符号。"
+            class="form-textarea"
+            rows="6"
+          ></textarea>
+        </div>
+        
+        <div class="form-group">
+          <h3>快速模板</h3>
+          <div class="template-buttons">
+            <button class="template-btn" data-template="你是一个专业的技术评论员。回复应该深入、有见地，长度在150-250字。">
+              💻 技术评论员
+            </button>
+            <button class="template-btn" data-template="你是一个投资者。回复应该关注商业价值和市场机会，简洁有力。">
+              💰 投资者
+            </button>
+            <button class="template-btn" data-template="你是一个幽默的内容创作者。回复应该有趣、轻松，可以使用表情符号和俏皮话。">
+              😄 内容创作者
+            </button>
+            <button class="template-btn" data-template="你是一个学者。回复应该引用相关研究或数据，保持学术严谨性。">
+              📚 学者
+            </button>
+            <button class="template-btn" data-template="回复应该简洁明了，最多50字。直接表达观点。">
+              ⚡ 简洁风格
+            </button>
+            <button class="template-btn" data-template="回复应该详细全面，300字左右。提供背景、分析和建议。">
+              📖 详细风格
+            </button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 按钮 -->
+      <section class="button-section">
+        <button id="saveBtn" class="btn btn-primary">💾 保存设置</button>
+        <button id="resetBtn" class="btn btn-secondary">🔄 重置为默认</button>
+        <span id="status" class="status-message"></span>
+      </section>
+    </div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
